@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+#app{
+	margin:auto;
+	width:600px;
+}
+</style>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+class Menu extends React.Component{
+	// 클래스 안에 사용자 정의 메서드를 정의한다
+	showMsg(){
+		alert("안녕");
+	}
+	
+	
+	render(){
+		var title=this.props.title; //props 는 이밎 지원되는 속성값이다
+
+		var bgStyle={//렌더 메서드 안에 변수를 선언하여 스타일을  json으로 담는다.
+			width:"200px",
+			height:"200px",
+			border:"5px solid blue",
+			background:this.props.bg
+		}
+		return (
+			<div>
+				<div style={bgStyle}><img src={this.props.src} width="150px" onClick={e=>this.showMsg(e)}/></div>
+			</div>
+		)
+	}		
+}
+
+ReactDOM.render(getTag(),document.getElementById("app"));
+
+function getTag(){
+	return (
+		<Menu bg="red" title="작년사진" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzOT4uekAcWnhWFJ691CSzeyaw81YVHWYXTes30KLNGqqeGag_Xw"></Menu>
+	)
+}
+</script>
+</head>
+<body>
+	<div id="app"></div>
+</body>
+</html>
+
